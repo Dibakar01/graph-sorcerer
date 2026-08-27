@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+  <rect width="1200" height="400" fill="#0d1117"/>
+  <defs>
+    <marker id="aD" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 1 L9 5 L0 9 z" fill="#8b7c79"/>
+    </marker>
+    <marker id="oD" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 1 L9 5 L0 9 z" fill="#f4614e"/>
+    </marker>
+    <marker id="dD" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 1 L9 5 L0 9 z" fill="#6b605e"/>
+    </marker>
+  </defs>
+
+  <!-- the job -->
+  <rect x="46" y="168" width="150" height="64" rx="6" fill="none" stroke="#f0e9e7" stroke-width="2"/>
+  <text x="121" y="196" fill="#f0e9e7" font-size="14" text-anchor="middle">your job</text>
+  <text x="121" y="215" fill="#8b7c79" font-size="11" text-anchor="middle">N things to do</text>
+  <path d="M200 200 H262" stroke="#8b7c79" stroke-width="2" fill="none" marker-end="url(#aD)"/>
+
+  <!-- gate -->
+  <path d="M348 152 L410 200 L348 248 L286 200 Z" fill="none" stroke="#f4614e" stroke-width="2.5"/>
+  <text x="348" y="196" fill="#f4614e" font-size="12.5" text-anchor="middle" font-weight="700">GATE</text>
+  <text x="348" y="213" fill="#f4614e" font-size="10.5" text-anchor="middle">fake-edge</text>
+  <text x="348" y="285" fill="#8b7c79" font-size="11" text-anchor="middle">does B need A's result?</text>
+
+  <!-- branch up: build -->
+  <path d="M410 186 C 452 186, 452 116, 494 116" stroke="#f4614e" stroke-width="2" fill="none" marker-end="url(#oD)"/>
+  <text x="452" y="100" fill="#f4614e" font-size="10.5" text-anchor="middle" letter-spacing="1.2">NO EDGE</text>
+
+  <!-- graph cluster -->
+  <rect x="502" y="94" width="74" height="44" rx="5" fill="none" stroke="#f4614e" stroke-width="2"/>
+  <text x="539" y="121" fill="#f4614e" font-size="11.5" text-anchor="middle">split</text>
+  <g stroke="#f4614e" stroke-width="1.8" fill="none">
+    <path d="M576 116 C 606 116, 610 58, 640 58" marker-end="url(#oD)"/>
+    <path d="M576 116 C 606 116, 610 96, 640 96" marker-end="url(#oD)"/>
+    <path d="M576 116 C 606 116, 610 136, 640 136" marker-end="url(#oD)"/>
+    <path d="M576 116 C 606 116, 610 174, 640 174" marker-end="url(#oD)"/>
+  </g>
+  <g fill="none" stroke="#f4614e" stroke-width="2">
+    <rect x="648" y="42" width="66" height="32" rx="5"/><rect x="648" y="80" width="66" height="32" rx="5"/>
+    <rect x="648" y="120" width="66" height="32" rx="5"/><rect x="648" y="158" width="66" height="32" rx="5"/>
+  </g>
+  <g fill="#f4614e" font-size="10.5" text-anchor="middle">
+    <text x="681" y="62">worker</text><text x="681" y="100">worker</text>
+    <text x="681" y="140">worker</text><text x="681" y="178">worker</text>
+  </g>
+  <g stroke="#f4614e" stroke-width="1.8" fill="none">
+    <path d="M714 58 C 744 58, 748 116, 778 116" marker-end="url(#oD)"/>
+    <path d="M714 96 C 744 96, 748 116, 778 116" marker-end="url(#oD)"/>
+    <path d="M714 136 C 744 136, 748 116, 778 116" marker-end="url(#oD)"/>
+    <path d="M714 174 C 744 174, 748 116, 778 116" marker-end="url(#oD)"/>
+  </g>
+  <rect x="786" y="94" width="86" height="44" rx="5" fill="none" stroke="#f4614e" stroke-width="2"/>
+  <text x="829" y="115" fill="#f4614e" font-size="11" text-anchor="middle">verify</text>
+  <text x="829" y="130" fill="#f4614e" font-size="11" text-anchor="middle">+ merge</text>
+  <path d="M872 116 H 916" stroke="#f4614e" stroke-width="2" fill="none" marker-end="url(#oD)"/>
+  <text x="1010" y="112" fill="#f0e9e7" font-size="14" font-weight="700">builds the graph</text>
+  <text x="1010" y="132" fill="#8b7c79" font-size="11">capped · verified · gated</text>
+
+  <!-- branch down: refuse -->
+  <path d="M410 214 C 452 214, 452 306, 494 306" stroke="#6b605e" stroke-width="2" fill="none" marker-end="url(#dD)"/>
+  <text x="452" y="342" fill="#6b605e" font-size="10.5" text-anchor="middle" letter-spacing="1.2">REAL EDGE</text>
+  <circle cx="556" cy="306" r="30" fill="none" stroke="#6b605e" stroke-width="2" stroke-dasharray="4 4"/>
+  <path d="M556 276 A 30 30 0 1 1 530 292" fill="none" stroke="#6b605e" stroke-width="2" marker-end="url(#dD)"/>
+  <text x="556" y="311" fill="#6b605e" font-size="10.5" text-anchor="middle">loop</text>
+  <path d="M596 306 H 640" stroke="#6b605e" stroke-width="2" fill="none" marker-end="url(#dD)"/>
+  <text x="656" y="302" fill="#f0e9e7" font-size="14" font-weight="700">refuses — and says why</text>
+  <text x="656" y="322" fill="#8b7c79" font-size="11">one agent is faster and cheaper here</text>
+</svg>

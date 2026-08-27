@@ -1,0 +1,22 @@
+name: Idea
+description: Suggest a change to the gate, the design phase, or the docs
+labels: ["idea"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What's the problem
+      description: Describe the situation where the plugin does the wrong thing. Concrete beats abstract.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What you'd change
+    validations:
+      required: true
+  - type: textarea
+    id: measurement
+    attributes:
+      label: How would we know it worked
+      description: If this changes when the skill refuses, what eval case would fail today and pass after? A rule nobody can measure is a rule that rots.

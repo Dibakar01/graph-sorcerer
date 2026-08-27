@@ -1,0 +1,30 @@
+name: Bug report
+description: Something behaves differently from what the docs say
+labels: ["bug"]
+body:
+  - type: input
+    id: cli-version
+    attributes:
+      label: Claude Code version
+      description: Output of `claude --version`. This plugin documents CLI behaviour, and that behaviour moves between versions — this field resolves most reports on its own.
+      placeholder: "2.1.247"
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened instead
+      description: Paste the response. If the skill fanned out when it should have refused (or refused when it should have fanned out), include the request you made.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: The prompt that reproduces it
+      description: The smaller the better. If you can express it as an eval case, even better.

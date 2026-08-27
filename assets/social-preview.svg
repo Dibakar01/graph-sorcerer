@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+  <rect width="1280" height="640" fill="#ffffff"/>
+  <rect x="0" y="0" width="1280" height="10" fill="#d92819"/>
+  <g transform="translate(118,196) scale(2.05)">
+  <path d="M40 58 C 40 90, 50 114, 64 114 C 78 114, 88 90, 88 58 Z" fill="#ffffff" stroke="#1a1211" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="55" cy="80" r="3.6" fill="#1a1211"/>
+  <circle cx="73" cy="80" r="3.6" fill="#1a1211"/>
+  <circle cx="46" cy="88" r="4.2" fill="#d92819" opacity=".24"/>
+  <circle cx="82" cy="88" r="4.2" fill="#d92819" opacity=".24"/>
+  <path d="M56 93 C 60 98, 68 98, 72 93" fill="none" stroke="#1a1211" stroke-width="3" stroke-linecap="round"/>
+  <path d="M70 10 C 60 26, 52 46, 47 60 L 83 60 C 80 42, 78 24, 70 10 Z" fill="#d92819" stroke="#1a1211" stroke-width="3" stroke-linejoin="round"/>
+  <ellipse cx="64" cy="61" rx="38" ry="8.5" fill="#d92819" stroke="#1a1211" stroke-width="3"/>
+  <path d="M51 54 C 58 57, 71 57, 79 54" fill="none" stroke="#1a1211" stroke-width="2.6" stroke-linecap="round" opacity=".5"/>
+  <g stroke="#d92819" stroke-width="3" stroke-linecap="round">
+    <path d="M70 4 V 0"/><path d="M62 7 L 59 3"/><path d="M78 7 L 81 3"/>
+  </g>
+</g>
+  <text x="470" y="262" fill="#1a1211" font-size="76" font-weight="700" letter-spacing="-2">Graph Sorcerer</text>
+  <text x="474" y="318" fill="#7a6a68" font-size="27">Designs agent graphs — and tells you</text>
+  <text x="474" y="356" fill="#7a6a68" font-size="27">when you don&#39;t need one.</text>
+  <rect x="474" y="408" width="470" height="2" fill="#ebe0de"/>
+  <text x="474" y="454" fill="#d92819" font-size="21" font-weight="600">claude plugin marketplace add</text>
+  <text x="474" y="484" fill="#d92819" font-size="21" font-weight="600">Dibakar01/graph-sorcerer</text>
+  <text x="474" y="546" fill="#a89896" font-size="19">~130 tokens always-on  ·  MIT  ·  refuses narrow work by design</text>
+</svg>

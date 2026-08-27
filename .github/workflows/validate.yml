@@ -1,0 +1,64 @@
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  manifests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Manifests parse, agree, and carry no BOM
+        run: |
+          python3 - <<'PY'
+          import json, pathlib, sys
+
+          fail = []
+          base = pathlib.Path(".claude-plugin")
+
+          def load(name):
+              raw = (base / name).read_bytes()
+              if raw[:3] == b"\xef\xbb\xbf":
+                  fail.append(f"{name}: UTF-8 BOM present — this silently breaks plugin install")
+                  raw = raw[3:]
+              try:
+                  return json.loads(raw.decode())
+              except json.JSONDecodeError as e:
+                  fail.append(f"{name}: invalid JSON — {e}")
+                  return None
+
+          plugin = load("plugin.json")
+          market = load("marketplace.json")
+
+          if plugin and market:
+              entry = next((p for p in market["plugins"] if p["name"] == plugin["name"]), None)
+              if entry is None:
+                  fail.append("marketplace.json lists no plugin matching plugin.json's name")
+              else:
+                  for field in ("version", "description"):
+                      if entry.get(field) != plugin.get(field):
+                          fail.append(f"{field} disagrees between plugin.json and marketplace.json")
+
+          # the skill the plugin exists to ship must actually be there, with frontmatter
+          skill = pathlib.Path("skills/graph-sorcerer/SKILL.md")
+          if not skill.exists():
+              fail.append("skills/graph-sorcerer/SKILL.md is missing")
+          else:
+              text = skill.read_text()
+              if not text.startswith("---\n"):
+                  fail.append("SKILL.md has no YAML frontmatter")
+              else:
+                  fm = text.split("---\n", 2)[1]
+                  for key in ("name:", "description:"):
+                      if key not in fm:
+                          fail.append(f"SKILL.md frontmatter missing {key}")
+                  if len(fm) > 1024:
+                      fail.append(f"SKILL.md frontmatter is {len(fm)} chars — the limit is 1024")
+
+          for f in fail:
+              print("FAIL:", f)
+          print("OK: manifests and skill validated" if not fail else "")
+          sys.exit(1 if fail else 0)
+          PY

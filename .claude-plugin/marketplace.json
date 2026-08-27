@@ -1,0 +1,24 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "graph-sorcerer",
+  "description": "Plugin marketplace for graph-sorcerer — designing agent graphs that are worth running.",
+  "owner": {
+    "name": "Dibakar Upadhyaya",
+    "url": "https://github.com/Dibakar01"
+  },
+  "plugins": [
+    {
+      "name": "graph-sorcerer",
+      "description": "Designs agent graphs — and refuses to build one when the work isn't actually wide. Runs a fake-edge test before fanning out, enforces fresh-context verifiers and a hard agent cap, and never launches a fleet without your go-ahead.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Dibakar Upadhyaya"
+      },
+      "source": "./",
+      "category": "productivity",
+      "keywords": ["agents", "parallel", "workflow", "orchestration", "subagents", "fan-out", "graph", "cost-control"],
+      "homepage": "https://github.com/Dibakar01/graph-sorcerer",
+      "repository": "https://github.com/Dibakar01/graph-sorcerer"
+    }
+  ]
+}

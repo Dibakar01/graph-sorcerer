@@ -1,0 +1,22 @@
+{
+  "name": "graph-sorcerer",
+  "version": "0.1.0",
+  "description": "Designs agent graphs — and refuses to build one when the work isn't actually wide. Runs a fake-edge test before fanning out, enforces fresh-context verifiers and a hard agent cap, and never launches a fleet without your go-ahead.",
+  "author": {
+    "name": "Dibakar Upadhyaya",
+    "url": "https://github.com/Dibakar01"
+  },
+  "homepage": "https://github.com/Dibakar01/graph-sorcerer",
+  "repository": "https://github.com/Dibakar01/graph-sorcerer",
+  "license": "MIT",
+  "keywords": [
+    "agents",
+    "parallel",
+    "workflow",
+    "orchestration",
+    "subagents",
+    "fan-out",
+    "graph",
+    "cost-control"
+  ]
+}
