@@ -32,7 +32,12 @@ claude plugin install graph-sorcerer@graph-sorcerer
 
 Then just ask, in your own words. No keyword to memorise.
 
-<sub>Costs **~130 tokens** of always-on context per session; the reference material loads only when a graph is actually warranted.</sub>
+<div align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/cost-dark.svg">
+  <img alt="Cost to leave installed: about 130 tokens always-on, drawn to scale as a hairline against a 200k context window — 0.065%." src="assets/cost-light.svg" width="100%">
+</picture>
+</div>
 
 ---
 
@@ -69,6 +74,26 @@ Any model parallelises when asked. These are what get skipped under time pressur
 | ⚓ | **An anchor** | A graph comparing its own outputs to its own outputs measures consistency and reports it as truth. More nodes = more confident, not more correct. |
 
 Plus a **hard cap** — Claude Code's workflow-size setting is [advisory, not enforced](#notes-on-accuracy).
+
+---
+
+## What you give up by not using it
+
+None of this is exotic. It is the set of checks that get skipped at 5pm on a Thursday — which is
+exactly when skipping them costs you.
+
+| | Without it | With it |
+|---|---|---|
+| **You ask for a parallel run on serial work** | You get one. The model complies — that is what it is for. You pay for N agents and finish in roughly the time one agent would have taken. | It declines, names the work a loop, and says why. You pay for nothing. |
+| **Speedup expectation** | Unbounded by implication — more agents *feels* like more speed. | It states the serial fraction and the real ceiling. Under ~2×, it tells you the graph is not worth building. |
+| **Verification** | The worker's own context checks the worker's output. It agrees, because it already believed it. | A separate node on fresh context, asked three *different* questions. It can actually disagree. |
+| **Agent count** | Claude Code's workflow-size setting is a *hint to the model*, not an enforced limit. Nothing stops a runaway fan-out. | A hard cap is written into the spec itself. |
+| **Truth** | A graph comparing its own outputs to its own outputs reports consistency as truth. More nodes make it more confident, not more correct. | An anchor is required: a test that ran, a number the graph cannot rewrite. No anchor, no widening. |
+| **A node dies mid-run** | Its absence is silent. The report reads as complete, on partial data. | Every merge counts its inputs against what it expected and flags the gap. |
+| **Two "independent" agents touch the same file** | They overwrite each other. This happened to Bun's team on their first big fan-out. | Worker isolation via `isolation: "worktree"`, and shared *resources* get audited — not just shared data. |
+
+The honest summary: it does not make your agents smarter. It stops you paying for breadth you
+do not need, and stops a confident wrong answer reaching you dressed as a finished report.
 
 ---
 

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+  <rect width="1200" height="300" fill="#ffffff"/>
+  <text x="60" y="46" fill="#7a6a68" font-size="13" letter-spacing="2.4">WHAT IT COSTS TO LEAVE INSTALLED</text>
+
+  <text x="60" y="112" fill="#d92819" font-size="58" font-weight="700" letter-spacing="-1">~130 tokens</text>
+  <text x="490" y="104" fill="#1a1211" font-size="20">always-on, every session</text>
+  <text x="490" y="130" fill="#7a6a68" font-size="15">measured with <tspan font-weight="600">claude plugin details</tspan> — not an estimate</text>
+
+  <rect x="60" y="182" width="1080" height="22" rx="3" fill="#f0e7e5"/>
+  <rect x="60" y="182" width="2.2" height="22" rx="1" fill="#d92819"/>
+  <path d="M61 176 V 160 H 150" stroke="#d92819" stroke-width="1.6" fill="none"/>
+  <text x="158" y="164" fill="#d92819" font-size="14" font-weight="600">the gate lives here</text>
+  <text x="1140" y="164" fill="#7a6a68" font-size="13" text-anchor="end">a 200k context window</text>
+
+  <text x="60" y="238" fill="#7a6a68" font-size="15">That sliver is <tspan fill="#1a1211" font-weight="600">0.065%</tspan> of your context. It is drawn to scale, which is why you can barely see it.</text>
+  <text x="60" y="264" fill="#7a6a68" font-size="15">The reference material — mechanics, templates, the diamond — loads only once a graph is actually warranted.</text>
+</svg>
