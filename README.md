@@ -43,18 +43,12 @@ Then just ask, in your own words. No keyword to memorise.
 
 ## It never starts a fleet on its own
 
-```mermaid
-flowchart LR
-    A([you describe a job]) --> B{gate}
-    B -->|not wide enough| R[["this is a loop,<br/>not a graph"]]
-    B -->|wide enough| C[design<br/>topology · cap · anchor]
-    C --> D{{you review it}}
-    D -->|change this| C
-    D -->|green signal| E[run]
-    E --> F([one report])
-
-    style R stroke-dasharray: 5 5
-```
+<div align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/loop-dark.svg">
+  <img alt="You describe a job. The gate either stops there and says why, or produces a design. You review it and loop back with changes; only your green signal starts the run." src="assets/loop-light.svg" width="100%">
+</picture>
+</div>
 
 A fleet spends real money in the background, and the failure is quiet — a graph pointed at the
 wrong job returns a confident, complete, expensive, **wrong** report. So you approve the design
@@ -77,23 +71,27 @@ Plus a **hard cap** — Claude Code's workflow-size setting is [advisory, not en
 
 ---
 
-## What you give up by not using it
+## Same request. Two outcomes.
+
+<div align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/ab-dark.svg">
+  <img alt="The same request, two outcomes. Without the plugin eight agents spawn on work whose every step needs the last one's result. With it, the gate finds no independent pair and declines, leaving one agent." src="assets/ab-light.svg" width="100%">
+</picture>
+</div>
 
 None of this is exotic. It is the set of checks that get skipped at 5pm on a Thursday — which is
 exactly when skipping them costs you.
 
 | | Without it | With it |
 |---|---|---|
-| **You ask for a parallel run on serial work** | You get one. The model complies — that is what it is for. You pay for N agents and finish in roughly the time one agent would have taken. | It declines, names the work a loop, and says why. You pay for nothing. |
-| **Speedup expectation** | Unbounded by implication — more agents *feels* like more speed. | It states the serial fraction and the real ceiling. Under ~2×, it tells you the graph is not worth building. |
-| **Verification** | The worker's own context checks the worker's output. It agrees, because it already believed it. | A separate node on fresh context, asked three *different* questions. It can actually disagree. |
-| **Agent count** | Claude Code's workflow-size setting is a *hint to the model*, not an enforced limit. Nothing stops a runaway fan-out. | A hard cap is written into the spec itself. |
-| **Truth** | A graph comparing its own outputs to its own outputs reports consistency as truth. More nodes make it more confident, not more correct. | An anchor is required: a test that ran, a number the graph cannot rewrite. No anchor, no widening. |
-| **A node dies mid-run** | Its absence is silent. The report reads as complete, on partial data. | Every merge counts its inputs against what it expected and flags the gap. |
-| **Two "independent" agents touch the same file** | They overwrite each other. This happened to Bun's team on their first big fan-out. | Worker isolation via `isolation: "worktree"`, and shared *resources* get audited — not just shared data. |
+| **Serial work, asked in parallel** | You get a fleet. The model complies — that is what it is for. | It declines, and names the work a loop. |
+| **Verification** | The worker's own context checks its own output. It agrees, because it already believed it. | A separate node on fresh context, asked three *different* questions. |
+| **Agent count** | The workflow-size setting is a hint to the model, not a limit. Nothing stops a runaway fan-out. | A hard cap, written into the spec itself. |
+| **A node dies mid-run** | Silent. The report reads complete, on partial data. | Every merge counts its inputs and flags the gap. |
 
-The honest summary: it does not make your agents smarter. It stops you paying for breadth you
-do not need, and stops a confident wrong answer reaching you dressed as a finished report.
+It does not make your agents smarter. It stops you paying for breadth that was never there — and
+stops a confident wrong answer reaching you dressed as a finished report.
 
 ---
 
@@ -134,8 +132,8 @@ Read → diagnose → fix → re-run. Every step needs the last one's result. On
 </td></tr>
 </table>
 
-It also refuses when you want to approve every step, when you don't know what you're looking for
-yet, or when the steps genuinely depend on each other.
+It also refuses when you want to approve every step, when you don't yet know what you're looking
+for, or when the steps genuinely depend on each other.
 
 > **The tell:** if no two jobs are independent, there's no graph to build. It's a loop — and a loop is fine.
 
