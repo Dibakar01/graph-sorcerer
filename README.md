@@ -95,6 +95,36 @@ stops a confident wrong answer reaching you dressed as a finished report.
 
 ---
 
+## What it's worth
+
+<div align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/roi-dark.svg">
+  <img alt="Break-even in tokens. One wrongly fanned-out job of eight agents at fifteen thousand tokens each wastes 105,000 tokens. The plugin costs 130 tokens per session — a hairline on the same scale — so one prevented fan-out covers roughly 800 sessions." src="assets/roi-light.svg" width="100%">
+</picture>
+</div>
+
+Fan **N** agents at work whose every step needs the last one's result and you get one agent's worth
+of progress. **(N−1) × T** tokens are simply gone. Against a measured always-on cost of 130 tokens
+per session, one correctly-declined fan-out covers a lot of sessions:
+
+| Agents wrongly spawned | Tokens per agent | Wasted | Sessions of plugin cost covered |
+|---|---|---|---|
+| 4 | 8,000 | 24,000 | ~185 |
+| 8 | 15,000 | 105,000 | ~800 |
+| 8 | 25,000 | 175,000 | ~1,350 |
+| 16 | 25,000 | 375,000 | ~2,900 |
+
+**Read that honestly.** It is arithmetic, not a benchmark. The 130 tokens is measured; **N** and
+**T** are your numbers. And the figure it does *not* contain is the one that would turn this into
+an ROI claim — **how often the model fans out when it shouldn't.** That is a behavioural rate, it
+needs measuring rather than reasoning, and `bench/run.sh` is the harness for it.
+
+So the claim here is deliberately narrow: **if** it saves you from one unnecessary fleet, it has
+paid for its own presence for months. Whether it does is what the evals are for.
+
+---
+
 ## The shape it builds
 
 ```mermaid
