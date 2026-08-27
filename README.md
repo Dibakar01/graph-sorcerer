@@ -182,6 +182,43 @@ evals/
 
 ---
 
+---
+
+## Credits & source
+
+The thinking behind this plugin is **Anatoli Kopadze's**, from
+[*Graph Engineering explained: what it is, when to use it and when not to*](https://x.com/AnatoliKopadze/status/2080668775796314331)
+(24 July 2026). This is an implementation of his ideas, not a substitute for reading them — the
+article is genuinely good and worth your time.
+
+| Principle used here | Source |
+|---|---|
+| **Node / edge** — a node is one bounded job; an edge only counts when data actually passes along it | §2 |
+| **The fake-edge test** — *does this step need the result of the one before it?* | §3 |
+| **The diamond** — fan out → reduce → verify → synthesize | §5 |
+| **The checker needs a fresh context**, and three *different* questions beat three identical ones | §6 |
+| **The three failure modes** — context collapse, false independence, silent node death | §7 |
+| **When not to build a graph** — the four skip conditions | §8 |
+| **Anchors** — topology doesn't buy truth; name something the graph can't rewrite | §9 |
+| **The bill is real** — the Bun rewrite at ~$165k / 11 days / 64 agents | §12 |
+
+### What this repo added
+
+| | |
+|---|---|
+| **Amdahl's law, named** | The article asserts the serial-fraction ceiling but never names or draws it. The gate now states the honest speedup as a number, and says so when it's under ~2×. |
+| **Three CLI corrections** | Every mechanism was re-verified against the Claude Code changelog rather than taken from the article — see [Notes on accuracy](#notes-on-accuracy). |
+| **The refusal, enforced** | The article describes when *not* to build a graph. This makes declining the default behaviour rather than advice you have to remember at 5pm on a Thursday. |
+| **Eval cases** | Three, including one the plugin is supposed to *fail* to build. |
+
+Older than any of it: dataflow graphs, MapReduce, DAG orchestrators, and critical-path analysis
+from 1950s operations research. Kopadze concedes this in §1 and is right to — a pattern that has
+run critical systems for thirty years is exactly what you want underneath your work.
+
+**On IP.** The code and prose in this repository are MIT-licensed and written here. The ideas are
+cited above and belong to their author; nothing in this repo reproduces the article's text or its
+diagrams.
+
 <div align="center">
 
 **Requirements:** Claude Code 2.1+ · **Licence:** [MIT](LICENSE)
