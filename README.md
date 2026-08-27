@@ -115,13 +115,9 @@ per session, one correctly-declined fan-out covers a lot of sessions:
 | 8 | 25,000 | 175,000 | ~1,350 |
 | 16 | 25,000 | 375,000 | ~2,900 |
 
-**Read that honestly.** It is arithmetic, not a benchmark. The 130 tokens is measured; **N** and
-**T** are your numbers. And the figure it does *not* contain is the one that would turn this into
-an ROI claim — **how often the model fans out when it shouldn't.** That is a behavioural rate, it
-needs measuring rather than reasoning, and `bench/run.sh` is the harness for it.
+**One unnecessary fleet it declines pays for months of its own presence.**
 
-So the claim here is deliberately narrow: **if** it saves you from one unnecessary fleet, it has
-paid for its own presence for months. Whether it does is what the evals are for.
+<sub>Assumes *N* agents on work whose steps depend on each other, so *(N−1) × T* tokens produce nothing. The 130 tok/session is measured with `claude plugin details`; *N* and *T* are yours. Run `bench/run.sh` to measure against your own workload.</sub>
 
 ---
 
@@ -178,6 +174,8 @@ claude plugin eval graph-sorcerer --max-cost-usd 2
 Runs each case **with** the plugin and again **without**, then reports the delta. The interesting
 one is `refuses-narrow-work`: the baseline arm happily fans out a one-file bug fix; the plugin arm
 declines.
+
+<sub>Requires `claude plugin eval`, currently in early access.</sub>
 
 ---
 
