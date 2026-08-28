@@ -22,7 +22,22 @@ expensive, wrong report. Design first, show the design, iterate, then run only w
 
 ## Phase 1 — Gate
 
-Do this before designing anything.
+Three checks, in order. Any one of them ends the job here.
+
+### 1. Derive — is this the real problem?
+
+Before asking whether the work is wide, ask what the work actually *is*. Strip the framing it
+arrived in, name what is irreducibly true, and check that against reality rather than against how
+jobs like this usually go. Two questions separate a premise from a habit: can you say where the
+belief came from, or did it arrive already formed? If it were false, what would you see — and have
+you looked?
+
+This matters more here than almost anywhere, because a fleet multiplies whatever you point it at.
+Often the derivation collapses the job outright: *"audit 40 files for missing auth"* may really be
+*"we don't know which routes are public"*, which one middleware file answers. Deriving the wrong
+problem and then parallelising it beautifully is still the wrong answer, delivered faster.
+
+### 2. The fake-edge test — is it actually wide?
 
 **Run the fake-edge test.** List the jobs. For each arrow between two jobs, ask one question:
 *does this step actually need the result of the one before it?* If yes, the edge is real. If no,
@@ -41,7 +56,17 @@ the serial fraction sets the floor (this is Amdahl's law). If 40% of the work is
 sequential, infinite agents still only buy ~2.5×. Estimate the fraction and say the number out
 loud. **If the realistic win is under about 2×, say the graph isn't worth it** and explain why.
 
-If the gate fails, stop here. Report what the work actually is — usually a loop — and what to do
+### 3. The brief — will one prompt survive being copied N times?
+
+A fan-out is one prompt run N times, so vague in means N× vague out, at N× the cost. Prompt quality
+matters more in a fleet than in a single agent because the error multiplies instead of staying put.
+
+Before fanning out, the worker brief needs four things: the task as a precise operation rather than
+a vague verb, the shape of the output, the constraints, and how the worker knows it succeeded. If
+you cannot state the success criterion, the node cannot either — and N confident, unusable answers
+cost the same as N good ones.
+
+If any check fails, stop there. Report what the work actually is — usually a loop — and what to do
 instead. Don't soften it into "we could build a small graph anyway."
 
 ## Phase 2 — Design
@@ -108,6 +133,13 @@ run: cap, model tiers, human gates, the anchor, and whether workers need isolate
 | "More nodes will make it more accurate" | More nodes make it more consistent. Without an anchor, consistency and confident wrongness look identical. |
 | "They asked for a fleet, so build a fleet" | They asked for the outcome. If a loop gets it faster and cheaper, that's the better answer — say so. |
 | "It's mostly serial but a graph is more impressive" | It's slower and pricier. Amdahl doesn't negotiate. |
+
+## Where the gates come from
+
+None of the three is exotic. Derive is first-principles reasoning applied *before* the design
+rather than after it. The fake-edge test is dependency analysis. The brief is ordinary prompt
+engineering applied to the node contract. The only thing this skill adds is enforcing all three
+*before* a fleet spends money — the one place where skipping them costs N times as much.
 
 ## Reference
 
