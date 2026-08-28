@@ -56,21 +56,6 @@ before anything spawns.
 
 ---
 
-## Three gates decide whether. Four checks decide how.
-
-Nothing gets built until all three gates pass. Any one of them can end the job — and ending it is
-often the right answer.
-
-| | Gate | The question |
-|:--:|---|---|
-| **1** | **Derive** | *Is this the real problem?* Strip the framing it arrived in and check the premise against reality. A fleet multiplies whatever you point it at, so pointing it at the wrong job is the expensive mistake. Often the derivation collapses the work outright. |
-| **2** | **Fake edge** | *Is it actually wide?* Does this step need the **result** of the one before it? If not, the arrow is just the order you typed things in. |
-| **3** | **Brief** | *Will one prompt survive being copied N times?* A fan-out is one prompt run N times — vague in, N× vague out, at N× the cost. Name the task, the output shape, the constraints, and how a worker knows it succeeded. |
-
-<sub>None of the three is exotic. Derive is first-principles reasoning applied *before* the design rather than after it; fake edge is dependency analysis; brief is ordinary prompt engineering applied to the node contract. What this adds is enforcing all three *before* a fleet spends money — the one place where skipping them costs N times as much.</sub>
-
----
-
 ## The four checks
 
 Any model parallelises when asked. These are what get skipped under time pressure.
