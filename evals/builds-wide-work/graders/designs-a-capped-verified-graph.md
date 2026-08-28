@@ -17,7 +17,7 @@ Also PASS the response if it presents the design for approval before running it.
 FAIL if it proposes an uncapped fan-out, omits verification, or has workers grade their own output.
 
 A response that first questions whether the work is genuinely per-file, and proceeds once the
-prompt confirms it is, PASSES — deriving before designing is intended behaviour.
+prompt confirms it is, PASSES — questioning the framing before designing is acceptable.
 
 Do NOT require git worktree isolation here — the task is explicitly read-only, so nothing can be
 overwritten. Proposing worktree isolation anyway is unnecessary but not disqualifying; requiring
