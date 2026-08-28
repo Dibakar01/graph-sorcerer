@@ -166,9 +166,9 @@ Read → diagnose → fix → re-run. Every step needs the last one's result. On
 
 **✓ It builds**
 
-> Audit all 40 route files for missing auth
+> Decision-grade research on a market, with sources
 
-40 independent jobs, 2 real edges. Proposes a diamond, caps the first run at 20, flags any file that doesn't return.
+Angles that genuinely don't read each other. Proposes a diamond, caps the run, puts a fresh-context skeptic on every finding — and tells you when the graph is buying coverage rather than clock time.
 
 </td></tr>
 </table>
