@@ -235,6 +235,43 @@ evals/
 
 ---
 
+## Security scan
+
+Scanned with [SkillSpector](https://github.com/hyperbliss/skillspector) 2.11.0. The raw verdict,
+not a summary of it:
+
+| | |
+|---|---|
+| Risk score | **17 / 100** — severity **LOW** |
+| Executable code | **none.** No scripts, no hooks, no MCP servers, no install steps |
+| Findings | 3, all MEDIUM, all in `references/patterns.md` |
+| Scan mode | static-only — the semantic pass was unavailable on this run |
+| `safe_to_install` | **false** |
+
+That last row is not a typo, and it is worth understanding rather than hiding. **Two of the three
+findings match the literal string `without asking`** — inside this line:
+
+```
+HUMAN GATE:   change nothing after that without asking me
+```
+
+A human-in-the-loop instruction, flagged as *"autonomous decision making without human-in-the-loop
+verification."* The scanner found the safety rail and reported it as the hazard. The third flags
+"session persistence" against a code block with no cron job, startup script or state file in it.
+
+Judge that yourself rather than taking the maintainer's word — re-run it:
+
+```
+scan_skill target="https://github.com/Dibakar01/graph-sorcerer"
+```
+
+Scanning any skill before you install it is a good habit, this one included. What the scan does
+establish here is the part that matters most, and it is checkable in one command:
+**there is no executable code.** `claude plugin details graph-sorcerer` reports the same inventory
+— one skill, one reference file, zero hooks, zero MCP servers.
+
+---
+
 ## Credits & source
 
 The thinking behind this plugin is **Anatoli Kopadze's**, from
