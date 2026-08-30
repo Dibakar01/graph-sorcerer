@@ -94,7 +94,7 @@ it (see `references/patterns.md`).
 ## Matching the house style
 
 A fleet of agents will otherwise produce a dozen different house styles in one codebase. Before
-fanning out, read the nearest `CLAUDE.md` / `AGENTS.md` and pass the relevant conventions into
+fanning out, read the nearest CLAUDE.md or AGENTS.md and pass the relevant conventions into
 **every** worker prompt — not just the lead. Also carry across anything the user has set for this
 run: cap, model tiers, human gates, the anchor, and whether workers need isolated worktrees.
 

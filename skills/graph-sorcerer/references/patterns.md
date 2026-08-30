@@ -217,7 +217,7 @@ VERIFY:       a skeptic attacks each finding and tries to disprove it; drop what
 MERGE:        survivors into one report ranked by confidence
 ANCHOR:       [a source the graph cannot rewrite]
 SAVE:         research-report.md, then show me the top findings
-HUMAN GATE:   change nothing after that without asking me
+HUMAN GATE:   ask me before changing anything after that
 ```
 
 **Content draft.** Parallel research, serial writing — the honest shape.
@@ -257,7 +257,7 @@ PARALLEL JOBS (writing, from that doc):
   2. a week of launch posts
   3. a set of outreach messages
 VERIFY:       a checker compares every asset to the positioning doc, flags anything off
-SAVE:         launch-kit/, change nothing after that without asking me
+SAVE:         launch-kit/ — then ask me before changing anything
 ```
 
 **Refactor sweep.** Isolation is mandatory here — the workers all write code.
