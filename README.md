@@ -7,7 +7,7 @@
 
 # Graph Sorcerer
 
-**Designs agent graphs — and tells you when you don't need one.**
+**Designs agent graphs and tells you when you don't need one.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-d92819?style=flat-square)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude_Code-2.1%2B-1a1211?style=flat-square)](https://claude.com/claude-code)
